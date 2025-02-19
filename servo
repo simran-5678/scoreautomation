@@ -1,0 +1,32 @@
+#include <Arduino.h>
+#include <Servo.h>
+
+Servo myservo;  
+
+void setup() {
+  Serial.begin(115200);
+  myservo.attach(11);                                                                                                                                               
+  pinMode(2, INPUT_PULLUP);
+  pinMode(3, INPUT_PULLUP);
+  pinMode(4, INPUT_PULLUP);
+}
+
+void loop() {
+  Serial.println(digitalRead(2));
+  delay(500);
+  // Serial.println(digitalRead(3));
+  // Serial.println(digitalRead(4));
+  if(digitalRead(2)==0 && digitalRead(3)==0 )
+  {
+    // in steps of 1 degree
+    myservo.write(90);              
+  }
+  else if (digitalRead(4)==0)
+  {
+    myservo.write(90);              
+  }
+  else{
+    myservo.write(0);
+
+  }
+}
